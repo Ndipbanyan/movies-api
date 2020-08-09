@@ -23,22 +23,22 @@ fetch(url)
         card.setAttribute('class', 'card')
 
         //create h1 tags for movie titles
-        const title = document.createElement('h1')
-        title.textContent = movie.name
+        const movieTitle = document.createElement('h1')
+        movieTitle.textContent = movie.name
 
         //create p tags for movie description limitied to 200 characters
 
-        const description = document.createElement('p')
-        description = movie.summary.substring(0, 200)
+        let description = document.createElement('p')
+        //description = movie.summary.substring(0, 200)
         description.textContent = `${description}...`
 
         container.appendChild(card)
-        card.appendChild(title)
+        card.appendChild(movieTitle)
         card.appendChild(description)
 
 
 
-        // console.log(movie.name)  
+        console.log(movie.name)  
     });
     
 
