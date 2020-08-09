@@ -29,8 +29,8 @@ fetch(url)
         //create p tags for movie description limitied to 200 characters
 
         let description = document.createElement('p')
-        //description = movie.summary.substring(0, 200)
-        description.textContent = `${description}...`
+        summary = movie.summary.substring(0, 200)
+        description.textContent = `${summary}...`
 
         container.appendChild(card)
         card.appendChild(movieTitle)
