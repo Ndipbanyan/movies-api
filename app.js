@@ -1,8 +1,9 @@
+// const { nextTick } = require("process")
+
 let url = "http://api.tvmaze.com/shows"
 fetch(url)
-  .then((response) => {
-    return response.json()
-  })
+  .then((response) => response.json()
+   )
   .then((data) => {
     // Setup
 
@@ -28,23 +29,57 @@ fetch(url)
 
         //create p tags for movie description limitied to 200 characters
 
-        let description = document.createElement('p')
-        summary = movie.summary.substring(0, 200)
-        description.textContent = `${summary}...`
+      let description = document.createElement('p')
+      let movieSummary = movie.summary.replace(/(<([^>]+)>)/gi, "");
+      summary = movieSummary.substring(0, 200);
+      let more = document.createElement('span')
+      more.textContent = "More ..."
+      more.style.color = "blue"
+      more.style.cursor = "pointer"
+
+      let less = document.createElement("span");
+      less.textContent = "less ...";
+      less.style.color = "blue";
+      less.style.cursor = "pointer";
+
+      more.addEventListener("click", () => {
+        description.textContent = movieSummary
+        description.append(less);
+        
+      })
+      less.addEventListener("click", () => {
+        description.textContent = movieSummary
+          .substring(0, 200)
+          
+      });
+      description.textContent = `${summary}  `
 
         container.appendChild(card)
         card.appendChild(movieTitle)
-        card.appendChild(description)
+      card.appendChild(description)
+      description.append(more)
+     
+
+      // str.replace(/(<([^>]+)>)/gi, "");
 
 
-
-        console.log(movie.name)  
+        console.log(data)  
     });
     
 
-    
-    
+    // const pagination = document.querySelector('.pagination')
+    // const first = document.querySelector('.first')
+    // const first = document.querySelector('.previous')
+    // const first = document.querySelector('.next')
+    // const first = document.querySelector('.last')
 
+    // // let page =0;
+
+    // next.addEventListener ('click', ()=>{
+
+    // })
+
+    
 
     
     
